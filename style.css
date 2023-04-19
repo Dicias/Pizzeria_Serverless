@@ -1,0 +1,80 @@
+/* Colores */
+
+/* #46294a 
+    #ad4c6b
+    #e07767
+    #e0ae67
+    #d4e067
+*/
+
+
+
+/* Generales */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+}
+
+li{
+    margin: 0 15px;  
+}
+
+
+/* Header */
+
+.nav-clase{
+    padding: 0px;
+    margin: 0;
+}
+
+.logo{
+    border: 3px solid #e8a45c;
+    border-radius: 50%;
+}
+
+.encabezado{
+display: flex;
+background-color: #ad4c6b;
+justify-content: space-between;
+width: 100%;
+}
+
+.encabezado-menu{
+    width: 100%;
+    justify-content: end;
+    padding: 2px;
+    font-size: 22px;
+}
+
+/* Section Hero */
+
+.contenedor-tarjetas{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.carta{
+    background-color: #e0ae67;
+}
+
+.boton-tarjeta{
+    background-color: #d4e067;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.boton-tarjeta:hover{
+    background-color: #e07767;
+}
+
+
+.carta img{
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
