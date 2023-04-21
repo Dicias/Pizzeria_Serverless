@@ -101,16 +101,45 @@
 
 </section>
     
+<!-- Modal -->
+<!-- Button trigger modal -->
+
+<div class="container" style="text-align: center;">
+<button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarCompra();">
+  Resumen de compra
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verifica tu pedido</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="borrarCompra();"></button>
+      </div>
+      <div class="modal-body resumen-compra" id="mostrar">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetCompra();">Cancelar Orden</button>
+        <!-- Este es el boton que activa la función landa -->
+        <button type="button" class="btn btn-primary btn-modal">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Footer -->
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-12" style="background-color: aqua;">
+      <div class="col-12";">
         <p class="text-center">Derechos reservados</p>
       </div>
     </div>
-  </div>>
+  </div>
 </footer>
 
 

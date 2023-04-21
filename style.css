@@ -78,3 +78,11 @@ width: 100%;
     border: 2px solid black;
     border-radius: 10px;
 }
+
+/* modal */
+
+.btn-modal{
+    background-color: #e07767;
+    font-size: 18px;
+    font-weight: bold; 
+}
