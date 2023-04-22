@@ -9,9 +9,10 @@ let     pedidoPizza1 = 0;
 let     pedidoPizza2 = 0;
 let     pedidoPizza3 = 0;
 
+
 function init(){
     ubicacion();
-    initMap();
+
 
     var menu_1 = document.getElementById("pizza1").onclick =function(){
     menu_1.value ="pizza_1";
@@ -39,6 +40,8 @@ function init(){
     //////////////
 
 
+
+    
 }
 
 
@@ -65,47 +68,37 @@ function agregarPedido(){
     }
 }
 
-
 function ubicacion(){
 if("geolocation" in navigator){
     navigator.geolocation.getCurrentPosition(success, error)
-
-}
-}
-
-var map;
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 43.5293, lng: -5.6773},
-        zoom: 13,
-      });
-      var marker = new google.maps.Marker({
-        position: {lat: 43.542194, lng: -5.676875},
-        map: map,
-    title: 'Acuario de Gijón'
-      });
     }
-
-
+}
 
 function success(position){
     var coordenadas = position.coords;
-    
     console.log(coordenadas.latitude, coordenadas.longitude);
+
+    initMap(coordenadas);
 }
 
 function error (error){
-    console.log("se trono apa");
+    alert("se trono apa");
     
 }
 
+function initMap(coordenadas) {
+    //console.log(coordenadas.latitude, coordenadas.longitude);
+    var map = L.map('map').setView([coordenadas.latitude, coordenadas.longitude], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var marker = L.marker([coordenadas.latitude, coordenadas.longitude]).addTo(map);
+    marker.bindPopup("<b>Aquí van a caer</b><br>tus pizzas.").openPopup();
+
+}
+
 function mostrarCompra(){
-    //console.log("hola,yo te muestro la compra");
-/*
-    if(pedidoPizza1 == 0 % pedidoPizza2 == 0 & pedidoPizza3 == 0){
-        mostrar.innerHTML =" No hay pedidos aún. esta bug " + "<br>";
-    }else
-*/
 
 
      if(pedidoPizza1 != 0){
