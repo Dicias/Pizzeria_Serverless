@@ -11,7 +11,7 @@ let     pedidoPizza3 = 0;
 
 function init(){
     ubicacion();
-    crearMapa();
+    initMap();
 
     var menu_1 = document.getElementById("pizza1").onclick =function(){
     menu_1.value ="pizza_1";
@@ -74,7 +74,7 @@ if("geolocation" in navigator){
 }
 
 var map;
-function crearMapa() {
+function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 43.5293, lng: -5.6773},
         zoom: 13,
