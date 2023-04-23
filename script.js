@@ -11,6 +11,7 @@ let     pedidoPizza3 = 0;
 
 
 function init(){
+    enviarUbicacion();
     ubicacion();
 
 
@@ -39,12 +40,9 @@ function init(){
     //console.log(menu_3.value);
     //////////////
 
-
-
-    
 }
 
-
+//Guardar pedidos en variables
 function agregarPedido(){
     switch(pedidoActual.value){
         case "pizza_1":
@@ -68,6 +66,7 @@ function agregarPedido(){
     }
 }
 
+//Obtener ubicación del cliente
 function ubicacion(){
 if("geolocation" in navigator){
     navigator.geolocation.getCurrentPosition(success, error)
@@ -86,6 +85,7 @@ function error (error){
     
 }
 
+//Creación el mapa
 function initMap(coordenadas) {
     //console.log(coordenadas.latitude, coordenadas.longitude);
     var map = L.map('map').setView([coordenadas.latitude, coordenadas.longitude], 13);
@@ -129,3 +129,30 @@ function resetCompra(){
     totalPrecio = 0;
 }
 
+/*
+const enviarUbicacion = (coordenadas) => {
+    fetch('https://sgfsg3d586.execute-api.us-east-2.amazonaws.com/default/funcionUbicacion', {
+      method: 'POST',
+      body: JSON.stringify({coordenadas: coordenadas})
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+  };
+*/
+
+  const enviarUbicacion = async () => {
+    const ubi = {
+      latitud: 37.7749,
+      longitud: -122.4194
+    };
+    
+    const response = await fetch('https://sgfsg3d586.execute-api.us-east-2.amazonaws.com/default/funcionUbicacion', {
+      method: 'POST',
+      body: JSON.stringify({ ubi }),
+    });
+    
+    const data = await response.json();
+    alert(data);
+    console.log("lo logro señor");
+  };
