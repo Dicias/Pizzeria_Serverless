@@ -16,7 +16,7 @@ function init(){
 
     var menu_1 = document.getElementById("pizza1").onclick =function(){
     menu_1.value ="pizza_1";
-    menu_1.precio = 250;
+    menu_1.precio = 200;
     //console.log(menu_1.precio); 
     pedidoActual = menu_1;
     agregarPedido();
@@ -25,7 +25,7 @@ function init(){
 
     var menu_2 = document.getElementById("pizza2").onclick =function(){
     menu_2.value ="pizza_2";
-    menu_2.precio = 250;
+    menu_2.precio = 200;
     pedidoActual = menu_2;
     agregarPedido();
     //console.log(menu_2.value);
@@ -65,6 +65,7 @@ function agregarPedido(){
     
     }
 }
+//////////Funciones Ubicación y mapa //////////
 
 //Obtener ubicación del cliente
 function ubicacion(){
@@ -86,17 +87,6 @@ function error (error){
     
 }
 
-/*
-function mostrarCoors(){
-
-    var latitude = coordsGlobales.latitude;
-    var longitude = coordsGlobales.longitude;
-    console.log(latitude, longitude + "ya funka");
-
-
-}
-*/
-
 
 //Creación el mapa
 function initMap(coordenadas) {
@@ -111,17 +101,19 @@ function initMap(coordenadas) {
     
 }
 
+////Funciones para agregar las compras al modal
+
 function mostrarCompra(){
 
 
      if(pedidoPizza1 != 0){
-        mostrar.innerHTML += "Pizza 1: " + pedidoPizza1 + "<br>";
+        mostrar.innerHTML += "Pizza de Pepperoni: " + pedidoPizza1 + "<br>";
     }
     if(pedidoPizza2 != 0){
-        mostrar.innerHTML += "Pizza 2: " + pedidoPizza2 + "<br>";
+        mostrar.innerHTML += "Pizza Huawaiiana: " + pedidoPizza2 + "<br>";
     }
     if(pedidoPizza3 != 0){
-        mostrar.innerHTML += "Pizza 3: " + pedidoPizza3 + "<br>";
+        mostrar.innerHTML += "Pizza 3 Carnes: " + pedidoPizza3 + "<br>";
     }
     if(totalPrecio == 0){
         mostrar.innerHTML =" No hay pedidos aún. " + "<br>";
@@ -142,7 +134,8 @@ function resetCompra(){
     totalPrecio = 0;
 }
 
-
+///////////////////////
+////////// Funciones Lambda //////////
 
 const enviarUbicacionLambda = async () => {
     let latitude = coordsGlobales.latitude
@@ -157,14 +150,30 @@ const enviarUbicacionLambda = async () => {
   
         }
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al enviar datos');
-        }
-        alert(`Datos enviados con éxito! Estas son las coordenadas: ` + latitude +" " + longitude);
-        alert("Falta enviar los pedidos enviados tambien")
-        return response.json();
-      })
-      .catch(error => console.error('Error:', error));
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
     }
+
+
+    //en reparación...
+    const enviarPedidosLambda = async () =>{
+        const pedidoFinal = {
+          "pizza1": pedidoPizza1,
+          "pizza2": pedidoPizza2,
+          "pizza3": pedidoPizza3,
+          "total": totalPrecio
+        }
+      
+        const lambdaEndpoint = 'https://gtwe7hrihi.execute-api.us-east-2.amazonaws.com/TesteoPedidos/pedidotest';
+      
+        fetch(lambdaEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(pedidoFinal)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+      }
 

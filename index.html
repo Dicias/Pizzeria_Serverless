@@ -49,7 +49,7 @@
                 <a class="nav-link" href="#">Complementos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-cart4"></i></a>
+                <button class="nav-link" href="#"><i class="bi bi-cart4" data-bs-toggle="modal" data-bs-target="#exampleModal"onclick="mostrarCompra();"></i></button>
               </li>
             </ul>
           </div>
@@ -66,34 +66,34 @@
     <div class="row">
         <div class="col-4 contenedor-tarjetas">
             <div class="card carta">
-                <img src="images/pizza-1.png" class="card-img-top" alt="pizza">
+                <img src="images/pizza-pepperoni.jpg" class="card-img-top" alt="pizza">
                 <div class="card-body">
-                  <h5 class="card-title">Peluche en el estuche</h5>
-                  <p class="card-text">Peluche en el estuche</p>
-                  <p>$250.00</p>
-                  <a href="#" class="btn boton-tarjeta" id="pizza1">Comprar</a>
+                  <h5 class="card-title">Pizza de pepperoni</h5>
+                  <p class="card-text">Pizza con Queso y pepperoni</p>
+                  <p>$200.00</p>
+                  <a href="#" class="btn boton-tarjeta" id="pizza1">Agregar al carrito</a>
                 </div>
               </div>
         </div>
         <div class="col-4 contenedor-tarjetas">
             <div class="card carta">
-                <img src="images/pizza-1.png" class="card-img-top" alt="pizza">
+                <img src="images/pizza-hawaiana.jpg" class="card-img-top" alt="pizza">
                 <div class="card-body">
-                  <h5 class="card-title">Echarle cal al peluche</h5>
-                  <p class="card-text">No, hacerse wey sí</p>
-                  <p>$250.00</p>
-                  <a href="#" class="btn boton-tarjeta " id="pizza2">Comprar</a>
+                  <h5 class="card-title">Pizza Hawaiana</h5>
+                  <p class="card-text">Pizza con Jamón y Queso</p>
+                  <p>$200.00</p>
+                  <a href="#" class="btn boton-tarjeta " id="pizza2">Agregar al carrito</a>
                 </div>
               </div>
         </div>
         <div class="col-4 contenedor-tarjetas">
             <div class="card carta">
-                <img src="images/pizza-1.png" class="card-img-top" alt="pizza">
+                <img src="images/pizza-carne.png" class="card-img-top" alt="pizza">
                 <div class="card-body">
-                  <h5 class="card-title">Hacerse wey</h5>
-                  <p class="card-text">Sí, echarle cal al peluche No</p>
+                  <h5 class="card-title">Pizza 3 Carnes</h5>
+                  <p class="card-text">Pizza con salchicha carne molida y jamón</p>
                   <p>$250.00</p>
-                  <a href="#" class="btn boton-tarjeta" id="pizza3">Comprar</a>
+                  <a href="#" class="btn boton-tarjeta" id="pizza3">Agregar al carrito</a>
                 </div>
               </div>
         </div>
@@ -109,6 +109,7 @@
   </div>
   
   <!-- Modal -->
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -122,7 +123,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetCompra();">Cancelar Orden</button>
           <!-- Este es el boton que activa la función lambda -->
-          <button type="button" class="btn btn-primary btn-modal" onclick="enviarUbicacionLambda();">Comprar</button>
+          <button type="button" class="btn btn-primary btn-modal" onclick="enviarUbicacionLambda(),enviarPedidosLambda();">Comprar</button>
         </div>
       </div>
     </div>
