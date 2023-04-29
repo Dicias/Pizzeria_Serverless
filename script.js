@@ -173,7 +173,11 @@ const enviarUbicacionLambda = async () => {
           body: JSON.stringify(pedidoFinal)
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {console.log(data);
+            alert("tu pedido: " + data.message)
+        })
         .catch(error => console.error(error));
-      }
+
+
+    }
 
