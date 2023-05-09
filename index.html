@@ -40,13 +40,13 @@
           <div class="collapse navbar-collapse encabezado-menu" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="#" style="font-weight: bolder;">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Promociones</a>
+                <a class="nav-link" href="#" style="font-weight: bolder;">Promociones</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Complementos</a>
+                <a class="nav-link" href="#" style="font-weight: bolder;">Complementos</a>
               </li>
               <li class="nav-item">
                 <button class="nav-link" href="#"><i class="bi bi-cart4" data-bs-toggle="modal" data-bs-target="#exampleModal"onclick="mostrarCompra();"></i></button>
@@ -57,43 +57,60 @@
       </nav>
 </header>
 
+<!-- Imagen de portada -->
+<section class="imagen">
+  <div class="background-image" style="background-image: url('images/horno-4.jpg'); height: 90vh; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); width: 100%; height: 100%;">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <h1 class="text-white mb-0" style="text-align: center;">En cada pizza que hacemos, ponemos todo nuestro corazón para que tú te sientas especial. Porque para nosotros, tú eres lo más importante.</h1>
+    </div>
+  </div>
+  </div>
+</section>
+
 <!-- Menu -->
 <section class="menu">
     <div class="container">
         <div class="row">
-                <h1 class="text-center">Menu</h1>
+          <h1 class="text-center">Conoce nuestro menu</h1>
         </div>
-    <div class="row">
+    <div class="row" style="margin-top: 0%; justify-content: space-evenly;">
         <div class="col-4 contenedor-tarjetas">
-            <div class="card carta">
-                <img src="images/pizza-pepperoni.jpg" class="card-img-top" alt="pizza">
+            <div class="carta">
+                <img src="images/Pizza pepperoni.jpg" class="card-img-top" alt="pizza">
+                <div class="card-body" style="margin-left: 0%;">
+                  <p class="card-title">Pizza de pepperoni</p>
+                  <p class="card-text">Pizza con Queso salchicha, jamón y chorizo tamaño familiar.</p>
+                  <div class="button-container">
+                    <p class="card-price">$200.00</p>
+                    <a href="#" class="btn boton-tarjeta" id="pizza1">+</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 contenedor-tarjetas">
+            <div class="carta">
+                <img src="images/Pizza hawaiana.jpg" class="card-img-top" alt="pizza">
                 <div class="card-body">
-                  <h5 class="card-title">Pizza de pepperoni</h5>
-                  <p class="card-text">Pizza con Queso y pepperoni</p>
-                  <p>$200.00</p>
-                  <a href="#" class="btn boton-tarjeta" id="pizza1">Agregar al carrito</a>
+                  <h5 class="card-title">Pizza Hawaiina</h5>
+                  <p class="card-text">Pizza con Jamón, queso y piña tamaño familiar.</p>
+                  <div class="button-container">
+                    <p class="card-price">$200.00</p>
+                    <a href="#" class="btn boton-tarjeta" id="pizza2">+</a>
+                  </div>
                 </div>
               </div>
         </div>
         <div class="col-4 contenedor-tarjetas">
-            <div class="card carta">
-                <img src="images/pizza-hawaiana.jpg" class="card-img-top" alt="pizza">
-                <div class="card-body">
-                  <h5 class="card-title">Pizza Hawaiana</h5>
-                  <p class="card-text">Pizza con Jamón y Queso</p>
-                  <p>$200.00</p>
-                  <a href="#" class="btn boton-tarjeta " id="pizza2">Agregar al carrito</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-4 contenedor-tarjetas">
-            <div class="card carta">
-                <img src="images/pizza-carne.png" class="card-img-top" alt="pizza">
+            <div class="carta">
+                <img src="images/Pizza-carne.jpg" class="card-img-top" alt="pizza">
                 <div class="card-body">
                   <h5 class="card-title">Pizza 3 Carnes</h5>
-                  <p class="card-text">Pizza con salchicha carne molida y jamón</p>
-                  <p>$250.00</p>
-                  <a href="#" class="btn boton-tarjeta" id="pizza3">Agregar al carrito</a>
+                  <p class="card-text">Pizza con Queso salchicha, jamón y chorizo tamaño familiar.</p>
+                  <div class="button-container">
+                    <p class="card-price">$250.00</p>
+                    <a href="#" class="btn boton-tarjeta" id="pizza3">+</a>
+                  </div>
                 </div>
               </div>
         </div>
@@ -121,9 +138,9 @@
   
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetCompra();">Cancelar Orden</button>
+          <button type="button" class="btn btn-secondary btn-modal2" data-bs-dismiss="modal" onclick="resetCompra();">Cancelar Orden</button>
           <!-- Este es el boton que activa la función lambda -->
-          <button type="button" class="btn btn-primary btn-modal" onclick="enviarUbicacionLambda(),enviarPedidosLambda();">Comprar</button>
+          <button type="button" class="btn btn-primary btn-modal" style="font-weight: normal; font-size: 18px; padding: 10px;"onclick="enviarUbicacionLambda(),enviarPedidosLambda();">Comprar</button>
         </div>
       </div>
     </div>
@@ -146,8 +163,8 @@
   <div class="container contenedor-footer">
     <div class="row">
       
-      <div class="col-12";">
-        <p class="text-center">Derechos reservados actualizados</p>
+      <div class="col-12">
+        <p class="text-center" style="display: flex; justify-content: center;">Derechos reservados actualizados</p>
       </div>
     </div>
   </div>

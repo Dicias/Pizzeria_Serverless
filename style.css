@@ -15,12 +15,16 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Sofia Sans Condensed', sans-serif;
+    
+}
+
+body{
+    background-color: #F6F6F6;
 }
 
 li{
     margin: 0 15px;  
 }
-
 
 /* Header */
 
@@ -30,15 +34,35 @@ li{
 }
 
 .logo{
-    border: 3px solid #e8a45c;
+    border: 3px solid #D61410;
     border-radius: 50%;
+    padding: 10px;
+    margin: 2px;
+}
+
+.card-title{
+    margin-top: 10%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 170%;
+}
+
+.card-text{
+    text-align: left;
+}
+
+.card-price{
+    color:#D61410; 
+    font-weight: bold; 
+    font-size: 30px;
 }
 
 .encabezado{
-display: flex;
-background-color: #ad4c6b;
-justify-content: space-between;
-width: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .encabezado-menu{
@@ -53,49 +77,84 @@ width: 100%;
 .contenedor-tarjetas{
     display: flex;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 15px;
+
+    width: 30%;
+    height: 450px;
+    background: #FFFFFF;
+    box-shadow: 0px 19px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 65px;
 }
 
 .carta{
-    background-color: #e0ae67;
+    background: #FFFFFF;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .boton-tarjeta{
-    background-color: #d4e067;
-    font-size: 16px;
-    font-weight: bold;
+    width: 55px;
+    height: 55px;
+    background: #D61410;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 100%;
+    color:#F6F6F6;
+    font-size: 30px;
 }
-
+/*#d4e067*/
 .boton-tarjeta:hover{
     background-color: #e07767;
 }
 
 
 .carta img{
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 45%;
     padding: 2px;
-    border: 2px solid black;
     border-radius: 10px;
 }
 
 /* modal */
-
 .btn-modal{
-    background-color: #e07767;
-    font-size: 18px;
+    background-color: #D61410;;
+    font-size: 22px;
     font-weight: bold; 
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 2%;
+    border: none;
+}
+
+.btn-modal2{
+    background-color: #4f4b4b;
+    font-size: 18px;
+    font-weight: normal; 
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 2%;
+    border: none;
 }
 
 /* Footer */
 footer{
-    background-color: #46294a;
-    color: white;
-
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 /* mapa */
 #map{
     height: 200px;
+}
+
+.row{
+    margin-top: 2%;
 }
 
 .contenedor-mapa{
