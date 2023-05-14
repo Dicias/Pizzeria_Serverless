@@ -169,7 +169,7 @@ const enviarUbicacionLambda = async () => {
       
         fetch(lambdaEndpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(pedidoFinal)
         })
         .then(response => response.json())
@@ -180,4 +180,29 @@ const enviarUbicacionLambda = async () => {
 
 
     }
-
+/*
+    const recibirPedidosLambda = async () => {
+        let lambda =`https://gtwe7hrihi.execute-api.us-east-2.amazonaws.com/TesteoPedidos/pedidotest`
+      
+        fetch(`${lambda}`, {
+          method: 'GET',
+          mode: 'cors',
+          headers: { 'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*' },
+        })
+        .then(response => response.json())
+        .then(data => {
+          
+          if (data.body) {
+                      console.log(data.body);(data);
+            const datosDiv = document.getElementById('datos');
+            datosDiv.innerHTML = JSON.stringify(data.body); 
+          } else {
+            
+            console.log('No se encontraron datos');
+          }
+        })
+        .catch(error => console.error(error));
+      }
+      
+*/
