@@ -164,20 +164,31 @@ const enviarUbicacionLambda = async () => {
           "pizza3": pedidoPizza3,
           "total": totalPrecio
         }
-      
+        //se guarda en una variable el link de nuestra API REST 
+        //para comunicarnos con la función lambda
         const lambdaEndpoint = 'https://gtwe7hrihi.execute-api.us-east-2.amazonaws.com/TesteoPedidos/pedidotest';
-      
+      //se realiza una solicitud con el uso de la función fetch
         fetch(lambdaEndpoint, {
+            //Se establece el metodo
           method: 'POST',
+          //Los encabezados son para validar los "CORS" 😫
           headers: { 'Content-Type': 'application/json' },
+          //convertir un objeto Js en una cadena JSON
           body: JSON.stringify(pedidoFinal)
         })
+        //La respuesta se convierte en un objeto Js
         .then(response => response.json())
+        //Se accede al cuerpo de la respuesta y se ejecuta 
+        //un alert que muestra los datos encriptados devueltos
         .then(data => {console.log(data);
-            alert("tu pedido: " + data.message)
+            const encryptedData = data.encryptedData;
+            alert("tu pedido: " + encryptedData)
+            
+            console.log('Valor cifrado:', encryptedData);
         })
+        //por si truena
         .catch(error => console.error(error));
-
 
     }
 
+      
