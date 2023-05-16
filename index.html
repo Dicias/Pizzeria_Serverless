@@ -140,7 +140,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-modal2" data-bs-dismiss="modal" onclick="resetCompra();">Cancelar Orden</button>
           <!-- Este es el boton que activa la función lambda -->
-          <button type="button" class="btn btn-primary btn-modal" style="font-weight: normal; font-size: 18px; padding: 10px;"onclick="enviarUbicacionLambda(),enviarPedidosLambda();">Comprar</button>
+          <button type="button" class="btn btn-primary btn-modal" style="font-weight: normal; font-size: 18px; padding: 10px;"onclick="enviarPedidosLambda();">Comprar</button>
         </div>
       </div>
     </div>
@@ -163,8 +163,10 @@
   <div class="container contenedor-footer">
     <div class="row">
       
-      <div class="col-12">
+      <div class="col-12" id="desencrypt-container" >
         <p class="text-center" style="display: flex; justify-content: center;">Derechos reservados actualizados</p>
+       
+        <button class="desencrypt" onclick="desencriptarPedidos()">Desencriptar</button>
       </div>
     </div>
   </div>

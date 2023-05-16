@@ -1,3 +1,5 @@
+
+
 console.log("conectado")
 let pedidoActual;
 
@@ -10,7 +12,10 @@ let     pedidoPizza2 = 0;
 let     pedidoPizza3 = 0;
 let     coordsGlobales;
 
+let encryptedData = 0;
+
 function init(){
+    
     ubicacion();
 
 
@@ -137,38 +142,19 @@ function resetCompra(){
 ///////////////////////
 ////////// Funciones Lambda //////////
 
-const enviarUbicacionLambda = async () => {
-    let latitude = coordsGlobales.latitude
-    let longitude = coordsGlobales.longitude
-    const lambda =`https://900d8x4r1a.execute-api.us-east-2.amazonaws.com/test/testcors?latitude=${latitude}&longitude=${longitude}`
-    
-    await fetch(lambda, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-  
-        }
-      })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-    }
-
-
     //en reparación...
     const enviarPedidosLambda = async () =>{
         const pedidoFinal = {
           "pizza1": pedidoPizza1,
           "pizza2": pedidoPizza2,
           "pizza3": pedidoPizza3,
-          "total": totalPrecio
+          "total": totalPrecio,     
         }
         //se guarda en una variable el link de nuestra API REST 
         //para comunicarnos con la función lambda
         const lambdaEndpoint = 'https://gtwe7hrihi.execute-api.us-east-2.amazonaws.com/TesteoPedidos/pedidotest';
       //se realiza una solicitud con el uso de la función fetch
-        fetch(lambdaEndpoint, {
+        await fetch(lambdaEndpoint, {
             //Se establece el metodo
           method: 'POST',
           //Los encabezados son para validar los "CORS" 😫
@@ -180,15 +166,63 @@ const enviarUbicacionLambda = async () => {
         .then(response => response.json())
         //Se accede al cuerpo de la respuesta y se ejecuta 
         //un alert que muestra los datos encriptados devueltos
-        .then(data => {console.log(data);
-            const encryptedData = data.encryptedData;
+         .then( data => {console.log(data);
+             encryptedData = data.encryptedData;
             alert("tu pedido: " + encryptedData)
-            
             console.log('Valor cifrado:', encryptedData);
+            
         })
+        
         //por si truena
         .catch(error => console.error(error));
-
+    
+        
     }
+    
 
-      
+    const desencriptarPedidos = async () => {
+
+        //console.log(encryptedData)
+        const dataEncrypt = {
+            "encryptedData": encryptedData,
+        }
+        //const lambda =`https://900d8x4r1a.execute-api.us-east-2.amazonaws.com/test/testcors?latitude=${latitude}&longitude=${longitude}`
+    const lambda = 'https://900d8x4r1a.execute-api.us-east-2.amazonaws.com/test/testcors'
+        
+        await fetch(lambda, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataEncrypt)
+          })
+          .then(response => response.json())
+          .then(data => {console.log(data, "desde ubi")
+            alert("tu pedido desencriptado apa: " + data.decryptedData)    
+        })
+          .catch(error => console.error(error));
+        
+       
+        }
+
+
+
+/*const desencriptarPedidos = () =>{
+
+    const lambdaEndpoint = "https://gtwe7hrihi.execute-api.us-east-2.amazonaws.com/TesteoPedidos/pedidotest"
+    let name = "juan" 
+
+     fetch (lambdaEndpoint,{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(name)
+     })
+     .then(response =>response.json())
+     .then(data=> {
+        console.log(data);
+        alert("tu pedido desencriptado es: " , data)
+     })
+
+}
+*/
